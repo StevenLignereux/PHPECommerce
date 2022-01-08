@@ -1,6 +1,6 @@
 <?php
 
-$pdo = new PDO("pgsql:host=localhost;port=5432;dbname=mydb;user=user;password=password");
+$pdo = new PDO("pgsql:host=localhost;port=5432;dbname=commerce", 'commerce');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $pdo->exec("
