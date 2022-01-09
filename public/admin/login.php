@@ -1,11 +1,15 @@
 <?php
-    require_once('../../bootstrap.php');
-    
-    if (is_post()) {
-        pdo()->prepare('SELECT * FROM admins WHERE name = ? AND password = ?')
-            ->execute([$_POST['name'], $_POST['password']]);
-    }
-    
+
+require_once(__DIR__ . '/../../bootstrap.php');
+
+
+if (is_post()) {
+    pdo()->prepare('SELECT * FROM admins WHERE name = ? AND password = ?')
+        ->execute([$_POST['name'], $_POST['password']]);
+    $admin = $query->fetch();
+    var_dump($admin);
+}
+
 ?>
 
 <?php partial('header', ['title' => 'Connexion Admin']); ?>

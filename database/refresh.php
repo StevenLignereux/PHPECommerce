@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . '/../bootstrap.php');
+
 $pdo = new PDO("pgsql:host=localhost;port=5432;dbname=commerce", 'commerce');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
