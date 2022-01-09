@@ -19,3 +19,9 @@ function pdo()
     
     return $pdo;
 }
+
+function redirect($url) 
+{
+    header("Location: $url");
+    die();
+}

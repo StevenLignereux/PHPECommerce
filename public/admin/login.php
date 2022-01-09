@@ -4,10 +4,16 @@ require_once(__DIR__ . '/../../bootstrap.php');
 
 
 if (is_post()) {
-    pdo()->prepare('SELECT * FROM admins WHERE name = ? AND password = ?')
-        ->execute([$_POST['name'], $_POST['password']]);
+    $query = pdo()->prepare('SELECT * FROM admins WHERE name = ?');
+    $query->execute([$_POST['name']]);
     $admin = $query->fetch();
-    var_dump($admin);
+
+    if ($admin and password_verify($_POST['password'], $admin['password'])) {
+        $_SESSION['admin'] = $admin;
+        redirect('/admin/dashboard.php');
+    } else {
+        $errors['credentials'] = 'Identifiants incorrects';
+    }
 }
 
 ?>
@@ -17,13 +23,19 @@ if (is_post()) {
     <h1>Connexion Admin</h1>
 
     <form method="POST">
+        <?php if (isset($errors['credentials'])): ?>
+        <p>
+            <?= $errors['credentials'] ?>
+        </p>
+        <?php endif; ?>
+        
         <p>
             <label for="name">Nom:</label>
             <input type="text" name="name" id="name">
         </p>
         <p>
             <label for="password">Mot de passe:</label>
-            <input type="text" name="password" id="password">
+            <input type="password" name="password" id="password">
         </p>
         <p>
             <button>Connexion</button>

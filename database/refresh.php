@@ -20,6 +20,6 @@ BEGIN
 
 $pdo->exec('CREATE TABLE admins(
     id SERIAL,
-    name TEXT,
+    name TEXT UNIQUE,
     password TEXT
 )');
