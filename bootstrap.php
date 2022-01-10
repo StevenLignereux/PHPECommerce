@@ -23,8 +23,21 @@ function pdo()
     return $pdo;
 }
 
-function redirect($url) 
+function redirect($url)
 {
     header("Location: $url");
+    die();
+}
+
+function redirect_unless_admin()
+{
+    if (!($_SESSION['admin'] ?? null)) {
+        redirect('/admin/login.php');
+    }
+}
+
+function abort_404()
+{
+    http_response_code(404);
     die();
 }

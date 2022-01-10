@@ -2,9 +2,6 @@
 
 require_once(__DIR__ . '/../../bootstrap.php');
 
-if ($_SESSION['admin']) {
-    redirect('/admin/dashboard.php');
-}
 
 if (is_post()) {
     $query = pdo()->prepare('SELECT * FROM admins WHERE name = ?');
