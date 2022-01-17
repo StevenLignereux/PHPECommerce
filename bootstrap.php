@@ -52,3 +52,7 @@ function abort_404()
     http_response_code(404);
     die();
 }
+
+function is_on_page($page){
+    return $_SERVER['SCRIPT_NAME'] === $page;
+}
