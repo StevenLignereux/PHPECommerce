@@ -10,7 +10,7 @@
                     </a>
                 </div>
                 
-                <div class="w-full my-1 py-2 px-3 <?= is_on_page('/admin/products/index.php') ? 'bg-gray-400' : '' ?>">
+                <div class="w-full my-1 py-2 px-3 <?= is_on_directory('/admin/products/') ? 'bg-gray-400' : '' ?>">
                     <a class="text-gray-800 hover:text-black" href="/admin/products/index.php">
                         Produits
                     </a>
@@ -30,4 +30,4 @@
             </div>
         </nav>
 
-<main class="bg-white shadow-xl p-8">
+<main class="bg-white shadow-xl p-8 w-full">

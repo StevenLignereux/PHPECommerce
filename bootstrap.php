@@ -23,7 +23,7 @@ function partial($name, $params = [])
 
 function is_post()
 {
-    return $_SERVER["REQUEST_METHOD"] === "POST";
+    return($_SERVER["REQUEST_METHOD"] ?? 'CLI') === "POST";
 }
 
 function pdo()
@@ -53,6 +53,12 @@ function abort_404()
     die();
 }
 
-function is_on_page($page){
+function is_on_page($page)
+{
     return $_SERVER['SCRIPT_NAME'] === $page;
+}
+
+function is_on_directory($directory)
+{
+    return strpos($_SERVER['SCRIPT_NAME'], $directory) === 0;
 }

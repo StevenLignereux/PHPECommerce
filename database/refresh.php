@@ -23,3 +23,9 @@ $pdo->exec('CREATE TABLE admins(
     name TEXT UNIQUE,
     password TEXT
 )');
+
+$pdo->exec('CREATE TABLE products(
+    id SERIAL,
+    name TEXT,
+    description TEXT
+)');
